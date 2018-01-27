@@ -148,7 +148,8 @@ class ViewController: UIViewController , UICollectionViewDataSource, UICollectio
         let sort = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sort]
         // fetchRequest.predicate = NSPredicate(format: " username = %@", "Victor Frankenstein")
-        fetchRequest.predicate = NSPredicate(format: "%K BEGINSWITH[cd] %@", "username" ,keyword)
+        // fetchRequest.predicate = NSPredicate(format: "%K BEGINSWITH[cd] %@", "username" ,keyword)
+        fetchRequest.predicate = NSPredicate(format: "username CONTAINS[cd] %@",keyword)
         userList = try! context.fetch(fetchRequest) as! [Users]
         collectionView.reloadData()
         
